@@ -12,6 +12,7 @@ public class DanielMain {
 	public static void main(String[] args) {
 		createFields();
 		promptName();
+		//promptInput();
 		promptForever();
 	}
 	
@@ -25,7 +26,7 @@ public class DanielMain {
 		while(inMainLoop){
 			print("Hi, "+user+". How are you?");
 			response = promptInput();
-			if(isTriggered(response, "good", 0) >= 0){
+			if(findKeyword(response, "good", 0) >= 0){
 				print("That's wonderful. "+"So glad to feel good");
 			}
 			else {
@@ -34,7 +35,7 @@ public class DanielMain {
 		}
 	}
 
-	public static int isTriggered(String searchString, String keyword, int startpsn) {
+	public static int findKeyword(String searchString, String keyword, int startpsn) {
 		searchString = searchString.trim();
 		searchString = searchString.toLowerCase();
 		keyword = keyword.toLowerCase();
@@ -65,7 +66,6 @@ public class DanielMain {
 		}
 		return -1;
 	}
-	
 	private static boolean noNegations(String searchString, int psn) {
 		if(psn - 3 >= 0  && searchString.substring(psn-3, psn).equals("no "))
 		{
