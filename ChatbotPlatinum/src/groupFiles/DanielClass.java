@@ -47,6 +47,7 @@ public class DanielClass implements Chatbot{
 		else{
 			int responseSelection = (int)(Math.random()*calmResponses.length);
 			DanielMain.print(calmResponses[responseSelection]);
+			
 		}
 		
 	}
