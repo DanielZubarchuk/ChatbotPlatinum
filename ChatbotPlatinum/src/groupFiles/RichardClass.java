@@ -8,7 +8,7 @@ public class RichardClass implements Chatbot{
 	//newLiving = new String[oldLiving.length-1];
 	//add names from old to new
 	//oldLKiving = newLivintg;
-	private String[] names = {""};
+	private String[] names = {"Joey", "Richard", "Daniel", "Victor", "Tobi", ""};
 	private String[] wordsHurt = {"You suck at this", "What a n00b, learn to think", "Give up", "Uninstall please"};
 	private boolean inKillLoop;
 	private int killCount;
