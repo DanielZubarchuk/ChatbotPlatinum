@@ -16,8 +16,7 @@ public class RichardClass implements Chatbot{
 	
 	public RichardClass(){
 		killCount = 0;
-		totalHeadCount = 12;
-		
+		totalHeadCount = 12;	
 		}
 	
 	@Override
