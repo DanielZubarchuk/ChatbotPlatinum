@@ -54,13 +54,13 @@ public class DanielClass implements Chatbot{
 
 
 	public boolean isTriggered(String userInput) {
-		if(DanielMain.findKeyword(userInput, "hello", 0) >= 0){
+		if(DanielMain.isTriggered(userInput, "hello", 0) >= 0){
 			return true;
 		}
-		if(DanielMain.findKeyword(userInput, "hi", 0) >= 0){
+		if(DanielMain.isTriggered(userInput, "hi", 0) >= 0){
 			return true;
 		}
-		if(DanielMain.findKeyword(userInput, "hey", 0) >= 0){
+		if(DanielMain.isTriggered(userInput, "hey", 0) >= 0){
 			return true;
 		}
 		return false;
