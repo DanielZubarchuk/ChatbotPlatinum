@@ -42,26 +42,22 @@ public class DanielMain {
 		System.out.println("The Phrase is "+searchString);
 		System.out.println("The keyword is "+keyword);
 		int psn = searchString.indexOf(0);
-		System.out.println("The keyword was found at "+psn);
+		
 		
 		while(psn >= 0){
 			String before = " ";
 			String after = " ";
 			if(psn > 0){
 				before = searchString.substring(psn-1, psn);
-				System.out.println("The Character before is "+before);
 			}
 			if(psn+ keyword.length() < searchString.length()){
 				after = searchString.substring(psn + keyword.length(), psn + keyword.length() + 1);                                            
-				System.out.println("The Character after is "+after);
 			}
 			if(before.compareTo("a") < 0 && after.compareTo("a") < 0 && noNegations(searchString, psn)){
-				System.out.println("Found "+keyword+" at "+psn);
 				return psn;
 			}
 			else{
 				psn = searchString.indexOf(keyword,psn+1);
-				System.out.print("Did not find "+keyword+", checking position "+psn);
 			}
 		}
 		return -1;

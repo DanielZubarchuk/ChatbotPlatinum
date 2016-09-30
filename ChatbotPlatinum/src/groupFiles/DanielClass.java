@@ -5,16 +5,19 @@ public class DanielClass implements Chatbot{
 	private String helloResponse;
 	private boolean inHelloLoop;
 	
-	private String[] calmResponses = 
-		{"We aready said Hello.Lets move the conversation along.",
-				"You said hello already. Did you forget?"};
+	//private String[] calmResponses = 
+	//	{"We aready said Hello.Lets move the conversation along.",
+	//			"You said hello already. Did you forget?"};
 	
-	private String[] angryResponses = 
-		{"Okay seriously, stop saying hello",
-				"What is wrong with you and saying hello?"};
+	//private String[] angryResponses = 
+		//{"Okay seriously, stop saying hello",
+		//		"What is wrong with you and saying hello?"};
 	
 	private String[] cpuQuestions = 
 		{"What Color Am I Thinking Of?", "", "", "", "", "", "", "", "", "", "", "", ""};
+	
+	private String[] cpuAnswers = 
+		{"", "", "", "", "", "", "", "", "", "", "", ""};
 	
 	private int helloCount;
 	
@@ -28,7 +31,7 @@ public class DanielClass implements Chatbot{
 		inHelloLoop = true;
 		while(inHelloLoop){
 			helloCount++;
-			printResponse();
+			//printResponse();
 			helloResponse = DanielMain.promptInput();
 			if(!isTriggered(helloResponse)){
 				inHelloLoop = false;
@@ -39,28 +42,22 @@ public class DanielClass implements Chatbot{
 		
 	}
 
-	private void printResponse() {
-		if(helloCount > 4){
-			int responseSelection = (int)(Math.random()*angryResponses.length);
-			DanielMain.print(angryResponses[responseSelection]);
-		}
-		else{
-			int responseSelection = (int)(Math.random()*calmResponses.length);
-			DanielMain.print(calmResponses[responseSelection]);
-		}
+	//private void printResponse() {
+	//	if(helloCount > 4){
+	//		int responseSelection = (int)(Math.random()*angryResponses.length);
+	//		DanielMain.print(angryResponses[responseSelection]);
+	//	}
+	//	else{
+	//		int responseSelection = (int)(Math.random()*calmResponses.length);
+	//		DanielMain.print(calmResponses[responseSelection]);
+	//	}
 		
-	}
+	//}
 
 
 
 	public boolean isTriggered(String userInput) {
-		if(DanielMain.findKeyword(userInput, "hello", 0) >= 0){
-			return true;
-		}
-		if(DanielMain.findKeyword(userInput, "hi", 0) >= 0){
-			return true;
-		}
-		if(DanielMain.findKeyword(userInput, "hey", 0) >= 0){
+		if(DanielMain.findKeyword(userInput, "", 0) >= 0){
 			return true;
 		}
 		return false;
