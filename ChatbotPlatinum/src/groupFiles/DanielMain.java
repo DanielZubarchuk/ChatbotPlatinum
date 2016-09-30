@@ -31,6 +31,7 @@ public class DanielMain {
 			}
 			else {
 				print("I don't understand");
+				
 			}
 		}
 	}
