@@ -29,7 +29,7 @@ public class DanielClass implements Chatbot{
 		{"Pizza", "Chips", "Hamburgers", "Salad", "Meat", "Rice"};
 	
 	private String[] cpuAnswersFive = 
-		{"Soccer", "Football", "Basketball", "", "", ""};
+		{"Soccer", "Football", "Basketball", "Hockey", "Swimming", "Track"};
 	
 	
 	
