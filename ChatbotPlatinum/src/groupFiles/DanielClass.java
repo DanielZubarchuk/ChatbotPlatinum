@@ -17,7 +17,7 @@ public class DanielClass implements Chatbot{
 		{"What Color Am I Thinking Of?", "", "", "", "", "", "", "", "", "", "", "", ""};
 	
 	private String[] cpuAnswers = 
-		{"", "", "", "", "", "", "", "", "", "", "", ""};
+		{"Blue", "", "", "", "", "", "", "", "", "", "", ""};
 	
 	private int helloCount;
 	
