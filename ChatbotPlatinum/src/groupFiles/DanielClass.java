@@ -13,6 +13,7 @@ public class DanielClass implements Chatbot{
 	//private String[] angryResponses = 
 		//{"Okay seriously, stop saying hello",
 		//		"What is wrong with you and saying hello?"};
+	
 	private String[] cpuQuestions = 
 		{"What Color Am I Thinking Of?", "What Animal Am I Thinking Of?", "What Number Am I Thinking Of?(Between 1 and 10)", "What is my favorite food?", "What is my favorite Sport?"};
 	
@@ -30,8 +31,6 @@ public class DanielClass implements Chatbot{
 	
 	private String[] cpuAnswersFive = 
 		{"Soccer", "Football", "Basketball", "Hockey", "Swimming", "Track"};
-	
-	
 	
 	
 	public void talk() {
@@ -78,7 +77,7 @@ public class DanielClass implements Chatbot{
 
 	private boolean notAMatch(String input, String[] acceptedResponse) {
 		for(int i = 0; i < ; i ++){
-			
+			return true;
 		}
 		return false;
 	}
