@@ -1,6 +1,7 @@
 package groupFiles;
 
 public class RichardClass implements Chatbot{
+	private boolean inRichardClassLoop = true;
 	//boolean with 12 elements
 	//auto* all of them false
 	//random make 2 true

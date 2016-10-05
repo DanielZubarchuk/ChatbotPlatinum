@@ -5,6 +5,7 @@ public class DanielClass implements Chatbot{
 	private String helloResponse;
 	private boolean inHelloLoop;
 	
+	
 	//private String[] calmResponses = 
 	//	{"We aready said Hello.Lets move the conversation along.",
 	//			"You said hello already. Did you forget?"};
@@ -12,23 +13,29 @@ public class DanielClass implements Chatbot{
 	//private String[] angryResponses = 
 		//{"Okay seriously, stop saying hello",
 		//		"What is wrong with you and saying hello?"};
-	
 	private String[] cpuQuestions = 
-		{"What Color Am I Thinking Of?", "", "", "", "", "", "", "", "", "", "", "", ""};
+		{"What Color Am I Thinking Of?", "What Animal Am I Thinking Of?", "What Number Am I Thinking Of?(Between 1 and 10)", "What is my favorite food?", "What is my favorite Sport?"};
 	
-	private String[] cpuAnswers = 
-		{"", "", "", "", "", "", "", "", "", "", "", ""};
+	private String[] cpuAnswersOne = 
+		{"Blue", "Red", "Yellow", "Green", "Orange", "Purple",};
 	
-	private int helloCount;
+	private String[] cpuAnswersTwo = 
+		{"Lion", "Tiger", "Ostrich", "Zebra", "Hamster", "Parrot", "Cat", "Dog",};
 	
-	public DanielClass(){
-		helloCount = 0;
-	}
+	private String[] cpuAnswersThree = 
+		{"2", "3", "5", "7", "4", "6", "8", "9"};
+	
+	private String[] cpuAnswersFour = 
+		{"Pizza", "Chips", "Hamburgers", "Salad", "Meat", "Rice"};
+	
+	private String[] cpuAnswersFive = 
+		{"Soccer", "Football", "Basketball", "Hockey", "Swimming", "Track"};
+	
 	
 	
 	
 	public void talk() {
-		inHelloLoop = true;
+		/*inHelloLoop = true;
 		while(inHelloLoop){
 			helloCount++;
 			//printResponse();
@@ -38,7 +45,7 @@ public class DanielClass implements Chatbot{
 				DanielMain.promptForever();
 				
 			}
-		}
+		} */
 		
 	}
 
@@ -54,8 +61,28 @@ public class DanielClass implements Chatbot{
 		
 	//}
 
+	public String forceResponse(String[] acceptedResponse){
+		String input = getInput();
+		while(notAMatch(input, acceptedResponse)){
+			
+		}
+		return input;
+	}
+	
+	private String getInput() {
+		
+		return null;
+	}
 
 
+
+	private boolean notAMatch(String input, String[] acceptedResponse) {
+		for(int i = 0; i < ; i ++){
+			
+		}
+		return false;
+	}
+	
 	public boolean isTriggered(String userInput) {
 		if(DanielMain.findKeyword(userInput, "", 0) >= 0){
 			return true;
