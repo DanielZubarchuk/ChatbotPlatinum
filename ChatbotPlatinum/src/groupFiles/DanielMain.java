@@ -9,6 +9,8 @@ public class DanielMain {
 		static Scanner input;
 		static String user;
 		
+		static Chatbot daniel;
+		
 	public static void main(String[] args) {
 		createFields();
 		promptName();
@@ -24,8 +26,9 @@ public class DanielMain {
 	public static void promptForever() {
 		inMainLoop = true;
 		while(inMainLoop){
-			print("Hi, "+user+". How are you?");
+			print("Hi, "+user+".We are going to play a game! I will ask you questions and you will have to guess the answers!");
 			response = promptInput();
+//			daniel.talk();
 			if(findKeyword(response, "good", 0) >= 0){
 				print("That's wonderful. "+"So glad to feel good");
 			}
@@ -40,8 +43,6 @@ public class DanielMain {
 		searchString = searchString.trim();
 		searchString = searchString.toLowerCase();
 		keyword = keyword.toLowerCase();
-		System.out.println("The Phrase is "+searchString);
-		System.out.println("The keyword is "+keyword);
 		int psn = searchString.indexOf(0);
 		
 		
@@ -93,6 +94,7 @@ public class DanielMain {
 
 	public static void createFields() {
 		input =  new Scanner(System.in);
+		daniel = new DanielClass();
 		user = "";
 	}
 	

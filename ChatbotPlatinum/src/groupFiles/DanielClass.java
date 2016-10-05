@@ -34,17 +34,13 @@ public class DanielClass implements Chatbot{
 	
 	
 	public void talk() {
-		/*inHelloLoop = true;
+		inHelloLoop = true;
 		while(inHelloLoop){
-			helloCount++;
-			//printResponse();
-			helloResponse = DanielMain.promptInput();
-			if(!isTriggered(helloResponse)){
-				inHelloLoop = false;
-				DanielMain.promptForever();
-				
-			}
-		} */
+			DanielMain.print(cpuQuestions[0]);
+			//guess is guaranteed to contain a keyword from the array
+			String guess = forceResponse(cpuAnswersOne);
+			DanielMain.print("You typed "+guess);
+		} 
 		
 	}
 
@@ -61,25 +57,25 @@ public class DanielClass implements Chatbot{
 	//}
 
 	public String forceResponse(String[] acceptedResponse){
-		String input = getInput();
+		String input = DanielMain.promptInput();
 		while(notAMatch(input, acceptedResponse)){
-			
+			DanielMain.print("I don't recognize that answer.");
+			input = DanielMain.promptInput();
 		}
 		return input;
 	}
-	
-	private String getInput() {
-		
-		return null;
-	}
+
 
 
 
 	private boolean notAMatch(String input, String[] acceptedResponse) {
-		for(int i = 0; i < ; i ++){
-			return true;
+		for(int i = 0; i < acceptedResponse.length; i ++){
+			if(DanielMain.findKeyword(input, acceptedResponse[i], 0) >= 0){
+				return false;
+			}
+			
 		}
-		return false;
+		return true;
 	}
 	
 	public boolean isTriggered(String userInput) {
