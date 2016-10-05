@@ -21,6 +21,7 @@ public class RichardClass implements Chatbot{
 	public String[] people;
 	public String[] mafia;
 	private String beep; 
+	private int happyTriggering;
 	public RichardClass(){
 		killCount = 0;
 		totalHeadCount = 12;
@@ -44,6 +45,7 @@ public class RichardClass implements Chatbot{
 			response = DanielMain.promptInput();
 			if(checkResponse(response) == false){
 				DanielMain.print("Dude are you stupid? Does that look like a listed name?");
+				happyTriggering++;
 			}
 			if(checkResponse(response) == true){
 				replace(people, response, "");
@@ -168,7 +170,7 @@ public class RichardClass implements Chatbot{
 
 	@Override
 	public boolean isTriggered(String userInput) {
-		if(DanielMain.findKeyword(userInput, "kill", 0) >= 0){
+		if(happyTriggering >= 3){
 			return true;
 		}
 		return false;
