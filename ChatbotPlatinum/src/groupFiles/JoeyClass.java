@@ -2,8 +2,13 @@ package groupFiles;
 
 import java.util.Scanner;
 
+import chatbot.JoeyMain;
+
 public class JoeyClass implements Chatbot{
 	private int pansyCounter;
+	private int annoyedCounter;
+	
+	
 	private String[] annoyed = {"Can you please do an action that actually exists?", "How many times do I have to tell you to"
 			+ " hit or stand?", "You aren't very good at following instructions."};
 	private String[] insult = {"Are you really passing again?", "Go big or go home loser",
@@ -40,17 +45,55 @@ public class JoeyClass implements Chatbot{
 		}
 		return false;
 	}
-
 	
-	private int buyIn(){
-		//find out how to move the name and input over
-		print("Welcome "+user+", How much would you like to bet?");
-		playerBet = input.nextLine();
+
+	private void standResponse() {
+		if(pansyCounter>4){
+			int responseSelection = (int)(Math.random()*insult.length);
+			print(insult[responseSelection]);
+		}else {
+			print("Okay, the value of your hand is "+myHandValue);
+		}
+	}
+	
+	private void dumbResponse() {
+		if(annoyedCounter>4){
+			int responseSelection = (int)(Math.random()*annoyed.length);
+			print(annoyed[responseSelection]);
+		}else {
+			print("I said, please choose to stand or hit.");
+		}
+	}
+	
+	private void praiseResponse() {
+		if(pansyCounter>4){
+			int responseSelection = (int)(Math.random()*praise.length);
+			print(praise[responseSelection]);
+		}else {
+			print("Okay, the value of your hand is "+myHandValue);
+		}
 	}
 	
 	
 	
 	
+	
+	
+	
+	private int buyIn(){
+		//find out how to move the name and input over
+		//find out how to retrieve int from input
+		print("Welcome "+user+", How much would you like to bet?");
+		playerBet = input.nextLine();
+	}
+	
+	private void hit(){
+		
+	}
+	
+	private void deal(){
+		
+	}
 	
 	
 	
