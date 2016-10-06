@@ -1,5 +1,7 @@
 package groupFiles;
 
+import java.util.Arrays;
+
 public class RichardClass implements Chatbot{
 	private boolean inRichardClassLoop = true;
 	//boolean with 12 elements
@@ -22,32 +24,31 @@ public class RichardClass implements Chatbot{
 	public String[] mafia;
 	private String beep; 
 	private int happyTriggering;
-	public RichardClass(){
-		killCount = 0;
-		totalHeadCount = 12;
-
-		generateLiving();
-		killLoop();
-		}
 	private void generateLiving(){
+		totalHeadCount = 12;
+		System.out.println("1");
 		String[] players;
 		players = new String[totalHeadCount];
 		System.arraycopy(pickVictums(), 0, players, 0, totalHeadCount);
 		mafia = setMafia(players);
 		people = randomize(players);
-		System.out.println(people);
+		System.out.println(Arrays.toString(people));
 		killLoop();
 	}
 	public void killLoop(){
+		killCount = 0; 
+		System.out.println("2");
 		inKillLoop = true;
 		while(inKillLoop == true){
 			DanielMain.print("Who do you want to kill?");
 			response = DanielMain.promptInput();
 			if(checkResponse(response) == false){
+				System.out.println("3");
 				DanielMain.print("Dude are you stupid? Does that look like a listed name?");
 				happyTriggering++;
 			}
 			if(checkResponse(response) == true){
+				System.out.println("4");
 				replace(people, response, "");
 				killCount++;
 				mafiaKill();
@@ -55,35 +56,45 @@ public class RichardClass implements Chatbot{
 				DanielMain.print(encouragement[e]);
 			}
 			if(people.length == 4){
+				System.out.println("5");
 				inKillLoop = false;
 				loser();
 				
 			}
 			if(mafia[0] == null && mafia[1] == null){
+				System.out.println("6");
 				inKillLoop = false;
 				win();
 			}
 		}
 	}
 	private void loser(){
+		System.out.println("7");
 		int l = (int) ((double)Math.random()*wordsHurt.length)-1;
 		DanielMain.print(wordsHurt[l]);
 	}
 	private void win(){
+		System.out.println("8");
 		DanielMain.print("Cheater, I hope you die");
 	}
 	private void mafiaKill(){
+		System.out.println("9");
 		int deathByMaf = (int) ((double) Math.random()*(people.length - killCount));
 		if(people[deathByMaf] == mafia[0] || people[deathByMaf] == mafia[1] || people[deathByMaf] == ""){
+			System.out.println("10");
 			mafiaKill();
 		}
 		else{
+			System.out.println("11");
 			replace(people, people[deathByMaf], "");
 		}
 	}
 	private boolean checkResponse(String response){
+		System.out.println("12");
 		for(int i = 0; i <= totalHeadCount-1; i++){
+			System.out.println("13");
 			if(response == people[i]){
+				System.out.println("14");
 				return true;
 			}
 		}	
@@ -91,21 +102,31 @@ public class RichardClass implements Chatbot{
 	}
 
 	public String[] pickVictums(){	
+		System.out.println("15");
 		String[]victumList;
 		victumList = new String[totalHeadCount];
 		//make copy of 'names'
 		String[] dummyNames = new String[names.length];
 		System.arraycopy(names, 0, dummyNames, 0, names.length);
+		System.out.println(Arrays.toString(dummyNames));
 		for(int i=0; i<=11; i++){
+			System.out.println("16");
 			int victum = (int) ((double) Math.random()*(dummyNames.length - 1))+1;
-				if(dummyNames[victum] == null){
+			System.out.println("THIS ONE IS PICKED " + dummyNames[victum]);
+				if(dummyNames[victum] == ""){
+					System.out.println("17");
 					i--;
 				}
 				else{
+					System.out.println("18");
 				replace(victumList, victumList[i], dummyNames[victum]);
 				replace(dummyNames, dummyNames[victum], "");
+				System.out.println("THIS ONE:" + victum);
+				System.out.println(Arrays.toString(dummyNames));
 				}
 		}
+		System.out.println("19");
+		System.out.println("***************** " + Arrays.toString(victumList));
 		return victumList;
 	}
 	//make replace method
@@ -118,28 +139,35 @@ public class RichardClass implements Chatbot{
 		}
 	}
 	public String[] setMafia(String[]list){
+		System.out.println("20");
 		String[]mafia;
 		mafia = new String[2];
 	//	if((list.length % 2) == 0){
-			for(int i = 0; i <= totalHeadCount/totalHeadCount; i++){
+			for(int i = 0; i <= 1; i++){
 				for(int j = 0; j<= (totalHeadCount/2)-1; j++){
-					if(i==1 && j==1){
-						replace(mafia, "", list[(i*5)+j]);
+					if(i==j){
+	//					System.out.println(list[(i*5)+j]);
+	//					System.out.println(Arrays.toString(mafia));
+						replace(mafia, null, list[(i*5)+j]);
 					}
 				}
 	//	else{		
 	//	}
 			}
+	//		System.out.println("##################### " + Arrays.toString(mafia));
 			return mafia;
 	}
 	public String[] randomize(String[]players){
+		System.out.println("21");
 		String[]randomized;
 		randomized = new String[totalHeadCount];
 		System.arraycopy(players, 0, randomized, 0, totalHeadCount);
 		int x = (int) ((double)Math.random()*totalHeadCount)+1;
 		int y = (int) ((double)Math.random()*totalHeadCount)+1;
 		String copyX = players[x];
+		System.out.println(copyX);
 		String copyY = players[y];
+		System.out.println(copyY);
 		//mafia index is 0 and 5
 		replace(randomized, players[x], players[0]);
 		replace(randomized, players[0], copyX);
@@ -156,9 +184,11 @@ public class RichardClass implements Chatbot{
 		
 	@Override
 	public void talk() {
+		System.out.println("22");
 		inRichardClassLoop = true;
 		//static call on promptInput method from RichardMain class
 		while(inRichardClassLoop){
+			generateLiving();
 			DanielMain.print("(Type 'quit' to go back)");
 			beep = DanielMain.promptInput();
 			if(beep.indexOf("quit") >= 0){
@@ -170,6 +200,7 @@ public class RichardClass implements Chatbot{
 
 	@Override
 	public boolean isTriggered(String userInput) {
+		System.out.println("23");
 		if(happyTriggering >= 3){
 			return true;
 		}
