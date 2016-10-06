@@ -93,8 +93,9 @@ public class DanielClass implements Chatbot{
 	}
 
 	private boolean notAMatch(String input, String[] acceptedResponse) {
+		int x = (int) ((Math.random() * acceptedResponse.length)-1);
 		for(int i = 0; i < acceptedResponse.length; i ++){
-			if(DanielMain.findKeyword(input, acceptedResponse[i], 0) >= 0){
+			if((DanielMain.findKeyword(input, acceptedResponse[i], 0) >= 0) && (acceptedResponse[x] == input)){
 				return false;
 			}
 		}
