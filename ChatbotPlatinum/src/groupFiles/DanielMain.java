@@ -28,7 +28,7 @@ public class DanielMain {
 		while(inMainLoop){
 			print("Hi, "+user+".We are going to play a game! I will ask you questions and you will have to guess the answers!");
 			response = promptInput();
-//			daniel.talk();
+			daniel.talk();
 			if(findKeyword(response, "good", 0) >= 0){
 				print("That's wonderful. "+"So glad to feel good");
 			}

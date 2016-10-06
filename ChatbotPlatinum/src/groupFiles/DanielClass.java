@@ -18,10 +18,10 @@ public class DanielClass implements Chatbot{
 		{"What Color Am I Thinking Of?", "What Animal Am I Thinking Of?", "What Number Am I Thinking Of?(Between 1 and 10)", "What is my favorite food?", "What is my favorite Sport?"};
 	
 	private String[] cpuAnswersOne = 
-		{"Blue", "Red", "Yellow", "Green", "Orange", "Purple",};
+		{"Blue", "Red", "Yellow", "Green", "Orange", "Purple"};
 	
 	private String[] cpuAnswersTwo = 
-		{"Lion", "Tiger", "Ostrich", "Zebra", "Hamster", "Parrot", "Cat", "Dog",};
+		{"Lion", "Tiger", "Ostrich", "Zebra", "Hamster", "Parrot", "Cat", "Dog"};
 	
 	private String[] cpuAnswersThree = 
 		{"2", "3", "5", "7", "4", "6", "8", "9"};
@@ -36,10 +36,37 @@ public class DanielClass implements Chatbot{
 	public void talk() {
 		inHelloLoop = true;
 		while(inHelloLoop){
-			DanielMain.print(cpuQuestions[0]);
-			//guess is guaranteed to contain a keyword from the array
-			String guess = forceResponse(cpuAnswersOne);
-			DanielMain.print("You typed "+guess);
+			int questionSelection = (int)(Math.random()*cpuQuestions.length);
+			int answerSelectionOne = (int)(Math.random()*cpuAnswersOne.length);
+			int answerSelectionTwo = (int)(Math.random()*cpuAnswersTwo.length);
+			int answerSelectionThree = (int)(Math.random()*cpuAnswersThree.length);
+			int answerSelectionFour = (int)(Math.random()*cpuAnswersFour.length);
+			int answerSelectionFive = (int)(Math.random()*cpuAnswersFive.length);
+			
+			DanielMain.print(cpuQuestions[questionSelection]);
+			//guess is guaranteed to contain a keyword from the arrays
+			if(questionSelection == 0){
+				String guessOne = forceResponse(cpuAnswersOne);
+				String correctAnswer =  cpuAnswersOne[answerSelectionOne];
+			}
+			if(questionSelection == 1){
+				String guessTwo = forceResponse(cpuAnswersTwo);
+				String correctAnswer = cpuAnswersTwo[answerSelectionTwo];
+			}
+			if(questionSelection == 2){
+				String guessThree = forceResponse(cpuAnswersThree);
+				String correctAnswer = cpuAnswersThree[answerSelectionThree];
+			}
+			if(questionSelection == 3){
+				String guessFour = forceResponse(cpuAnswersFour);
+				String correctAnswer = cpuAnswersFour[answerSelectionFour];
+			}
+			if(questionSelection == 4){
+				String guessFive = forceResponse(cpuAnswersFive);
+				String correctAnswer = cpuAnswersFour[answerSelectionFive];
+			}
+			
+			DanielMain.print("You typed "+helloResponse);
 		} 
 		
 	}
@@ -65,15 +92,11 @@ public class DanielClass implements Chatbot{
 		return input;
 	}
 
-
-
-
 	private boolean notAMatch(String input, String[] acceptedResponse) {
 		for(int i = 0; i < acceptedResponse.length; i ++){
 			if(DanielMain.findKeyword(input, acceptedResponse[i], 0) >= 0){
 				return false;
 			}
-			
 		}
 		return true;
 	}
