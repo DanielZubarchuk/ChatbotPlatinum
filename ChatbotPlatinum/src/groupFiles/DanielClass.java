@@ -65,7 +65,8 @@ public class DanielClass implements Chatbot{
 				String guessFive = forceResponse(cpuAnswersFive);
 				String correctAnswer = cpuAnswersFour[answerSelectionFive];
 			}
-			DanielMain.print("You typed "+ helloResponse);
+			
+			DanielMain.print("You typed "+helloResponse);
 		} 
 		
 	}
@@ -92,9 +93,11 @@ public class DanielClass implements Chatbot{
 	}
 
 	private boolean notAMatch(String input, String[] acceptedResponse) {
-			if(DanielMain.findKeyword(input, acceptedResponse[0], 0) >= 0){
+		for(int i = 0; i < acceptedResponse.length; i ++){
+			if(DanielMain.findKeyword(input, acceptedResponse[i], 0) >= 0){
 				return false;
 			}
+		}
 		return true;
 	}
 	
