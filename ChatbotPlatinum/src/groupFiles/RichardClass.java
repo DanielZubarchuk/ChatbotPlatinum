@@ -14,8 +14,8 @@ public class RichardClass implements Chatbot{
 	private String[] names = {"Joey", "Richard", "Daniel", "Victor", "Tobi", "Nockles", "Pickles", "Poon Bear", "Irene", 
 			"Amy", "Oscar", "Tina", "Jonathan", "Willy", "Dubby", "Terrance", "Jae", "Shirley", "Sara", "Taylor"};
 	private String[] wordsHurt = {"You suck at this", "What a n00b, learn to think", "Give up", "Uninstall please","LOSER, KEEP THAT 'L'"};
-	private String[] encouragement = {"Are you even trying??", "Oops, I cheated", "Just type 'QUIT' alreay, we all know you're a failure",
-			"What's that in your head? Oh, nevermind its just an empty shell", "Are you done or are you dead?", "Take the 'L' man, stop wasting everyone's time"};
+	private String[] encouragement = {"Are you even trying?? Try again", "Oops, I cheated! *Try again?", "Just type 'QUIT' alreay, we all know you're a failure. *Try again?",
+			"What's that in your head? Oh, nevermind its just an empty shell. *Try again?", "Are you done or are you dead? *Try again?", "Take the 'L' man, stop wasting everyone's time. *Try again?"};
 	static boolean inKillLoop;
 	private int killCount;
 	private int totalHeadCount;
@@ -24,14 +24,19 @@ public class RichardClass implements Chatbot{
 	public String[] mafia;
 	private String beep; 
 	private int happyTriggering;
+	//public String[] copyPlayers;
+	
 	private void generateLiving(){
 		totalHeadCount = 12;
 		System.out.println("1");
 		String[] players;
 		players = new String[totalHeadCount];
+		
+	//	copyPlayers = new String[totalHeadCount];
 		System.arraycopy(pickVictums(), 0, players, 0, totalHeadCount);
 		mafia = setMafia(players);
 		people = randomize(players);
+	//	System.arraycopy(players, 0, copyPlayers, 0, totalHeadCount);
 		System.out.println(Arrays.toString(people));
 		killLoop();
 	}
@@ -52,8 +57,10 @@ public class RichardClass implements Chatbot{
 				replace(people, response, "");
 				killCount++;
 				mafiaKill();
+				userKill();
 				int e = (int) ((double)Math.random()*encouragement.length)-1;
 				DanielMain.print(encouragement[e]);
+				System.out.println(Arrays.toString(people));
 			}
 			if(people.length == 4){
 				System.out.println("5");
@@ -77,6 +84,9 @@ public class RichardClass implements Chatbot{
 		System.out.println("8");
 		DanielMain.print("Cheater, I hope you die");
 	}
+	private void userKill(){
+		
+	}
 	private void mafiaKill(){
 		System.out.println("9");
 		int deathByMaf = (int) ((double) Math.random()*(people.length - killCount));
@@ -91,14 +101,30 @@ public class RichardClass implements Chatbot{
 	}
 	private boolean checkResponse(String response){
 		System.out.println("12");
-		for(int i = 0; i <= totalHeadCount-1; i++){
+		boolean checking = true;
+		boolean inList = false;
+		int count = 0;
+		while(checking == true){
+			
 			System.out.println("13");
-			if(response == people[i]){
+			System.out.println(response);
+			System.out.println(people[count]);
+			if(response.toLowerCase().equals(people[count].toLowerCase())){
 				System.out.println("14");
-				return true;
+				inList = true;
+				checking = false;
 			}
-		}	
-		return false;
+			count++;
+			if(count == totalHeadCount -1){
+				checking = false;
+			}
+		}
+//		for(int i = 0; i <= totalHeadCount-1; i++){
+//			
+//		}	
+		System.out.println("gottem");
+		System.out.println(inList);
+		return inList;
 	}
 
 	public String[] pickVictums(){	
@@ -146,15 +172,18 @@ public class RichardClass implements Chatbot{
 			for(int i = 0; i <= 1; i++){
 				for(int j = 0; j<= (totalHeadCount/2)-1; j++){
 					if(i==j){
-	//					System.out.println(list[(i*5)+j]);
-	//					System.out.println(Arrays.toString(mafia));
+						System.out.println(list[(i*5)+j]);
+						System.out.println(Arrays.toString(mafia));
 						replace(mafia, null, list[(i*5)+j]);
+						}
+					if(mafia[0] == mafia[1]){
+							i--;
 					}
 				}
 	//	else{		
 	//	}
 			}
-	//		System.out.println("##################### " + Arrays.toString(mafia));
+			System.out.println("##################### " + Arrays.toString(mafia));
 			return mafia;
 	}
 	public String[] randomize(String[]players){
@@ -162,17 +191,24 @@ public class RichardClass implements Chatbot{
 		String[]randomized;
 		randomized = new String[totalHeadCount];
 		System.arraycopy(players, 0, randomized, 0, totalHeadCount);
-		int x = (int) ((double)Math.random()*totalHeadCount)+1;
-		int y = (int) ((double)Math.random()*totalHeadCount)+1;
+		int x = (int) (Math.random()*totalHeadCount);
+		int y = (int) (Math.random()*totalHeadCount);
+		System.out.println("THIS IS X: " + x);
+		System.out.println("THIS IS Y: " + y);
 		String copyX = players[x];
 		System.out.println(copyX);
 		String copyY = players[y];
 		System.out.println(copyY);
 		//mafia index is 0 and 5
+		System.out.println("ORIGINAL: " + Arrays.toString(randomized));
 		replace(randomized, players[x], players[0]);
+		System.out.println("FRIST: " + Arrays.toString(randomized));
 		replace(randomized, players[0], copyX);
+		System.out.println("SECOND: " + Arrays.toString(randomized));
 		replace(randomized, players[y], players[5]);
+		System.out.println("THRID: " + Arrays.toString(randomized));
 		replace(randomized, players[5], copyY);
+		System.out.println("FORTH: " + Arrays.toString(randomized));
 		return randomized;
 	}
 		
@@ -186,7 +222,7 @@ public class RichardClass implements Chatbot{
 	public void talk() {
 		System.out.println("22");
 		inRichardClassLoop = true;
-		//static call on promptInput method from RichardMain class
+		//static call on promptInput method from DanielMain class
 		while(inRichardClassLoop){
 			generateLiving();
 			DanielMain.print("(Type 'quit' to go back)");
