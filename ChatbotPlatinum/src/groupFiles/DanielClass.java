@@ -10,18 +10,23 @@ public class DanielClass implements Chatbot{
 	
 	private String[] cpuAnswersOne = 
 		{"Blue", "Red", "Yellow", "Green", "Orange", "Purple"};
+	// first 3 colors are primary colors, meanwhile second 3 are secondary
 	
 	private String[] cpuAnswersTwo = 
 		{"Lion", "Tiger", "Ostrich", "Zebra", "Hamster", "Parrot", "Cat", "Dog"};
+	// first 4 animals are wild animals, meanwhile the rest are domestic
 	
 	private String[] cpuAnswersThree = 
 		{"2", "3", "5", "7", "4", "6", "8", "9"};
+	// first 4 numbers are prime, others are composite.
 	
 	private String[] cpuAnswersFour = 
 		{"Pizza", "Chips", "Hamburgers", "Salad", "Meat", "Rice"};
+	// first 3 foods are unhealthy, meanwhile second 3 foods are healthy
 	
 	private String[] cpuAnswersFive = 
 		{"Soccer", "Football", "Basketball", "Hockey", "Swimming", "Track"};
+	// first 3 sports include a ball, other 3 do not
 	
 	
 	public void talk() {
