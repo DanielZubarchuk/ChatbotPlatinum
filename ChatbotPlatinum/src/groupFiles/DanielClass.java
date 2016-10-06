@@ -39,6 +39,8 @@ public class DanielClass implements Chatbot{
 			while(!correct){
 				askTheQuestion(cpuQuestions[questionSelection]);
 				guess = forceResponse(getAllowedResponses(questionSelection));
+				//getSpecificHint();
+				DanielMain.print(getSpecificHint());
 				if(guess.equals(answer)){
 					DanielMain.print("You guessed correctly!");
 					correct = true;
@@ -47,6 +49,11 @@ public class DanielClass implements Chatbot{
 			//DanielMain.print("You typed "+);
 		} 
 		
+	}
+
+	private String getSpecificHint() {
+		
+		return null;
 	}
 
 	private String[] getAllowedResponses(int questionSelection) {
