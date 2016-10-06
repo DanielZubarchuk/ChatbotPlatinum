@@ -5,15 +5,6 @@ public class DanielClass implements Chatbot{
 	private String helloResponse;
 	private boolean inHelloLoop;
 	
-	
-	//private String[] calmResponses = 
-	//	{"We aready said Hello.Lets move the conversation along.",
-	//			"You said hello already. Did you forget?"};
-	
-	//private String[] angryResponses = 
-		//{"Okay seriously, stop saying hello",
-		//		"What is wrong with you and saying hello?"};
-	
 	private String[] cpuQuestions = 
 		{"What Color Am I Thinking Of?", "What Animal Am I Thinking Of?", "What Number Am I Thinking Of?(Between 1 and 10)", "What is my favorite food?", "What is my favorite Sport?"};
 	
@@ -37,54 +28,80 @@ public class DanielClass implements Chatbot{
 		inHelloLoop = true;
 		while(inHelloLoop){
 			int questionSelection = (int)(Math.random()*cpuQuestions.length);
-			int answerSelectionOne = (int)(Math.random()*cpuAnswersOne.length);
-			int answerSelectionTwo = (int)(Math.random()*cpuAnswersTwo.length);
-			int answerSelectionThree = (int)(Math.random()*cpuAnswersThree.length);
-			int answerSelectionFour = (int)(Math.random()*cpuAnswersFour.length);
-			int answerSelectionFive = (int)(Math.random()*cpuAnswersFive.length);
-			
-			DanielMain.print(cpuQuestions[questionSelection]);
-			//guess is guaranteed to contain a keyword from the arrays
-			if(questionSelection == 0){
-				String guessOne = forceResponse(cpuAnswersOne);
-				String correctAnswer =  cpuAnswersOne[answerSelectionOne];
+			String guess = "";
+			String answer = computerChoose(questionSelection);
+			boolean correct = false;
+			while(!correct){
+				askTheQuestion(cpuQuestions[questionSelection]);
+				guess = forceResponse(getAllowedResponses(questionSelection));
+				if(guess.equals(answer)){
+					DanielMain.print("You guessed correctly!");
+					correct = true;
+				}
 			}
-			if(questionSelection == 1){
-				String guessTwo = forceResponse(cpuAnswersTwo);
-				String correctAnswer = cpuAnswersTwo[answerSelectionTwo];
-			}
-			if(questionSelection == 2){
-				String guessThree = forceResponse(cpuAnswersThree);
-				String correctAnswer = cpuAnswersThree[answerSelectionThree];
-			}
-			if(questionSelection == 3){
-				String guessFour = forceResponse(cpuAnswersFour);
-				String correctAnswer = cpuAnswersFour[answerSelectionFour];
-			}
-			if(questionSelection == 4){
-				String guessFive = forceResponse(cpuAnswersFive);
-				String correctAnswer = cpuAnswersFour[answerSelectionFive];
-			}
-			
-			DanielMain.print("You typed "+helloResponse);
+			//DanielMain.print("You typed "+);
 		} 
 		
 	}
 
-	//private void printResponse() {
-	//	if(helloCount > 4){
-	//		int responseSelection = (int)(Math.random()*angryResponses.length);
-	//		DanielMain.print(angryResponses[responseSelection]);
-	//	}
-	//	else{
-	//		int responseSelection = (int)(Math.random()*calmResponses.length);
-	//		DanielMain.print(calmResponses[responseSelection]);
-	//	}
+	private String[] getAllowedResponses(int questionSelection) {
+		if(questionSelection == 0){
+			return cpuAnswersOne;
+			
+		}
+		if(questionSelection == 1){
+			return cpuAnswersTwo;
+			
+		}
+		if(questionSelection == 2){
+			return cpuAnswersThree;
+			
+		}
+		if(questionSelection == 3){
+			return cpuAnswersFour;
+			
+		}
+		if(questionSelection == 4){
+			return cpuAnswersFive;
+			
+		}
+		return null;
+	}
+
+	private void askTheQuestion(String string) {
+		DanielMain.print(string);
+	}
+
+	private String computerChoose(int questionSelection) {
+		//helper method
 		
-	//}
+		int answerSelectionOne = (int)(Math.random()*cpuAnswersOne.length);
+		int answerSelectionTwo = (int)(Math.random()*cpuAnswersTwo.length);
+		int answerSelectionThree = (int)(Math.random()*cpuAnswersThree.length);
+		int answerSelectionFour = (int)(Math.random()*cpuAnswersFour.length);
+		int answerSelectionFive = (int)(Math.random()*cpuAnswersFive.length);
+		
+		if(questionSelection == 0){
+			return  cpuAnswersOne[answerSelectionOne];
+		}
+		if(questionSelection == 1){
+			return cpuAnswersTwo[answerSelectionTwo];
+		}
+		if(questionSelection == 2){
+			return cpuAnswersThree[answerSelectionThree];
+		}
+		if(questionSelection == 3){
+			return cpuAnswersFour[answerSelectionFour];
+		}
+		if(questionSelection == 4){
+			return cpuAnswersFour[answerSelectionFive];
+		}
+		return null;
+	}
 
 	public String forceResponse(String[] acceptedResponse){
 		String input = DanielMain.promptInput();
+
 		while(notAMatch(input, acceptedResponse)){
 			DanielMain.print("I don't recognize that answer.");
 			input = DanielMain.promptInput();
@@ -93,9 +110,9 @@ public class DanielClass implements Chatbot{
 	}
 
 	private boolean notAMatch(String input, String[] acceptedResponse) {
-		int x = (int) ((Math.random() * acceptedResponse.length)-1);
+		
 		for(int i = 0; i < acceptedResponse.length; i ++){
-			if((DanielMain.findKeyword(input, acceptedResponse[i], 0) >= 0) && (acceptedResponse[x] == input)){
+			if((DanielMain.findKeyword(input, acceptedResponse[i], 0) >= 0) ){
 				return false;
 			}
 		}
