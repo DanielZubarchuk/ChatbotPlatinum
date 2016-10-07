@@ -313,11 +313,11 @@ public class RichardClass implements Chatbot{
 			beep = DanielMain.promptInput();
 			if(beep.indexOf("quit") >= 0){
 				inRichardClassLoop = false;
-				DanielMain.promptForever();
+				DanielMain.promptGame();
 			}
 			if(!isTriggered(beep)){
 				inRichardClassLoop = false;
-				DanielMain.promptForever();
+				DanielMain.promptGame();
 			}
 		}
 	}
