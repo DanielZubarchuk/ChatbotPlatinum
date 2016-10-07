@@ -2,7 +2,6 @@ package groupFiles;
 
 public class DanielClass implements Chatbot{
 
-	private String helloResponse;
 	private boolean inHelloLoop;
 	
 	private String[] cpuQuestions = 
@@ -31,20 +30,23 @@ public class DanielClass implements Chatbot{
 	
 	public void talk() {
 		inHelloLoop = true;
+		int questionSelection = (int)(Math.random()*cpuQuestions.length);
+		String answer = computerChoose(questionSelection);
+		askTheQuestion(cpuQuestions[questionSelection]);
 		while(inHelloLoop){
-			int questionSelection = (int)(Math.random()*cpuQuestions.length);
 			String guess = "";
-			String answer = computerChoose(questionSelection);
 			boolean correct = false;
 			while(!correct){
-				askTheQuestion(cpuQuestions[questionSelection]);
-				guess = forceResponse(getAllowedResponses(questionSelection));
 				//getSpecificHint();
+				guess = forceResponse(getAllowedResponses(questionSelection));
 				if(guess.equals(answer)){
 					DanielMain.print("You guessed correctly!");
 					correct = true;
+					talk();
 				}
-				getSpecificHint(guess, questionSelection);
+				else{
+					getSpecificHint(answer, questionSelection);
+				}
 
 			}
 			//DanielMain.print("You typed "+);
@@ -54,7 +56,7 @@ public class DanielClass implements Chatbot{
 
 	private String getSpecificHint(String real, int question){
 		if(question == 0){
-			if (real == "Blue" || real == "Yellow" || real == "Red"){
+			if (real.equals("Blue") || real.equals("Yellow") || real.equals("Red")){
 				DanielMain.print("It is a primary color");
 			}
 			else
@@ -64,7 +66,7 @@ public class DanielClass implements Chatbot{
 		}
 		if(question == 1)
 		{
-			if (real == "Lion" || real == "Tiger" || real == "Ostrich" || real == "Zebra"){
+			if (real.equals("Lion") || real.equals("Tiger") || real.equals("Ostrich") || real.equals("Zebra")){
 				DanielMain.print("It is a wild animal.");
 			}
 			else
@@ -74,7 +76,7 @@ public class DanielClass implements Chatbot{
 			
 		}
 		if(question == 2){
-			if (real == "2" || real == "3" || real == "5" || real == "7"){
+			if (real.equals("2") || real.equals("3") || real.equals("5") || real.equals("7")){
 				DanielMain.print("It is a prime number.");
 			}
 			else
@@ -84,7 +86,7 @@ public class DanielClass implements Chatbot{
 			
 		}
 		if(question == 3){
-			if (real == "Pizza" || real == "Hamburgers" || real == "Chips"){
+			if (real.equals("Pizza") || real.equals("Hamburgers") || real.equals("Chips")){
 				DanielMain.print("It is an unhealthy food.");
 			}
 			else
@@ -94,9 +96,9 @@ public class DanielClass implements Chatbot{
 			
 		}
 		if(question == 4){
-			if (real == "Soccer" || real == "Football" || real == "Basketball")
+			if (real.equals("Soccer") || real.equals("Football") || real.equals("Basketball"))
 			{
-				DanielMain.print("It is a sport that plays with need a ball.");
+				DanielMain.print("It is a sport that needs a ball.");
 			}
 			else
 			{
