@@ -40,6 +40,8 @@ public class DanielMain {
             if(findKeyword(response, "questions", 0) >= 0){
             //DANIEL TRIGGER WORD
                 inMainLoop = false;
+                print("Let's see how good of a guesser you are!");
+                daniel.talk();
                 
             }
             if(findKeyword(response, "mafia", 0) >= 0){
