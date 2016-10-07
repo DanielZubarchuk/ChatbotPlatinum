@@ -40,19 +40,71 @@ public class DanielClass implements Chatbot{
 				askTheQuestion(cpuQuestions[questionSelection]);
 				guess = forceResponse(getAllowedResponses(questionSelection));
 				//getSpecificHint();
-				DanielMain.print(getSpecificHint());
 				if(guess.equals(answer)){
 					DanielMain.print("You guessed correctly!");
 					correct = true;
 				}
+				DanielMain.print(getSpecificHint(guess,questionSelection));
+
 			}
 			//DanielMain.print("You typed "+);
 		} 
 		
 	}
 
-	private String getSpecificHint() {
-		
+	private String getSpecificHint(String real, int question){
+		if(question == 0){
+			if (real == "Blue" || real == "Yellow" || real == "Red"){
+				DanielMain.print("It is a primary color");
+			}
+			else
+			{
+				DanielMain.print("It is a secondary color!");
+			}			
+		}
+		if(question == 1)
+		{
+			if (real == "Lion" || real == "Tiger" || real == "Ostrich" || real == "Zebra"){
+				DanielMain.print("It is a wild animal.");
+			}
+			else
+			{
+				DanielMain.print("It is a domestic animal");
+			}	
+			
+		}
+		if(question == 2){
+			if (real == "2" || real == "3" || real == "5" || real == "7"){
+				DanielMain.print("It is a prime number.");
+			}
+			else
+			{
+				DanielMain.print("It is not a prime number");
+			}	
+			
+		}
+		if(question == 3){
+			if (real == "Pizza" || real == "Hamburgers" || real == "Chips"){
+				DanielMain.print("It is an unhealthy food.");
+			}
+			else
+			{
+				DanielMain.print("It is a healthy food.");
+			}	
+			
+		}
+		if(question == 4){
+			if (real == "Soccer" || real == "Football" || real == "Basketball")
+			{
+				DanielMain.print("It is a sport that plays with need a ball.");
+			}
+			else
+			{
+				DanielMain.print("This sport doesn’t need a ball.");
+			}	
+			
+		}
+
 		return null;
 	}
 
