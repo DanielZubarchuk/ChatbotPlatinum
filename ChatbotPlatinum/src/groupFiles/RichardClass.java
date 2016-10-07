@@ -68,12 +68,9 @@ public class RichardClass implements Chatbot{
 //					System.out.println("b");
 					userKill(response);
 //					System.out.println("c");
-					if(killCount == 6){
-						if(checkVictory() == true){
-//						System.out.println("d");
-						win = true;
-						break;
-						}
+					if(checkVictory()==true){
+						win();
+						inKillLoop = false;
 						break;
 					}
 //					System.out.println("e");
@@ -111,23 +108,16 @@ public class RichardClass implements Chatbot{
 		}
 	}
 	private boolean checkVictory(){
-	//	System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-		int x = 0;
-		for(int i = 0; i <= people.length -1; i++){
-			if(people[i] == mafia[0] || people[i] == mafia[1]){
-				x++;
-	//			System.out.println(x);
+		int mafNum = 0;
+		for(int i = 0; i < totalHeadCount; i++){
+			if(people[i] == mafia[0]){
+				mafNum++;
+			}
+			if(people[i] == mafia[1]){
+				mafNum++;
 			}
 		}
-		for(int i = 0; i <= people.length -1; i++){
-			if(!(people[i] == mafia[0])){
-				maf1--;
-			}
-			if(!(people[i] == mafia[1])){
-				maf2--;
-			}
-		}
-		if(x == 0 && (maf1 == 0 && maf2 == 0)){
+		if(mafNum == 0){
 			return true;
 		}
 		else{
@@ -268,7 +258,7 @@ public class RichardClass implements Chatbot{
 					}
 				}
 			}
-//			System.out.println("##################### " + Arrays.toString(mafia));
+			System.out.println("##################### " + Arrays.toString(mafia));
 			return mafia;
 	}
 	public String[] randomize(String[]players){
