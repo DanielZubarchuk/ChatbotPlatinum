@@ -66,6 +66,11 @@ public class RichardClass implements Chatbot{
 //					System.out.println("a");
 					killCount++;
 //					System.out.println("b");
+					if(loss() == true){
+						loser();
+						inKillLoop = false;
+						break;
+					}
 					userKill(response);
 //					System.out.println("c");
 					if(checkVictory()==true){
@@ -74,7 +79,12 @@ public class RichardClass implements Chatbot{
 						break;
 					}
 //					System.out.println("e");
+					if(killCount==6){
+					break;
+					}
+					else{	
 					mafiaKill();
+					}
 //					System.out.println("f");
 					int e = (int) ((double)Math.random()*encouragement.length);
 					DanielMain.print(encouragement[e]);
@@ -118,6 +128,25 @@ public class RichardClass implements Chatbot{
 			}
 		}
 		if(mafNum == 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	private boolean loss(){
+		int mafWin = 0;
+		if(killCount == 5){
+			for(int i=0; i <= people.length-1; i++){
+				if(people[i]==mafia[1]){
+					mafWin++;
+				}
+				if(people[i]==mafia[0]){
+					mafWin++;
+				}
+			}
+		}
+		if(mafWin == 2){
 			return true;
 		}
 		else{
@@ -258,7 +287,7 @@ public class RichardClass implements Chatbot{
 					}
 				}
 			}
-	//		System.out.println("##################### " + Arrays.toString(mafia));
+			System.out.println("##################### " + Arrays.toString(mafia));
 			return mafia;
 	}
 	public String[] randomize(String[]players){
