@@ -2,6 +2,10 @@ package groupFiles;
 
 import java.util.Scanner;
 
+import groupFiles.Chatbot;
+import groupFiles.DanielMain;
+import groupFiles.blackJackPlayer;
+
 public class JoeyClass implements Chatbot{
 	blackJackPlayer dealer = new blackJackPlayer("Dealer", 999999999);
 	blackJackPlayer player = new blackJackPlayer("", 1000);
@@ -51,8 +55,9 @@ public class JoeyClass implements Chatbot{
 			print("Your new balance is "+player.wealth);
 			resetGameVariables();
 			if(!playAgain()){
-				print("Thanks for playing with me, "+DanielMain.user);
-				break;
+				print("Thanks for playing Blackjack with me, "+DanielMain.user+".");
+				DanielMain.promptGame();
+				
 			}
 		}
 	}
