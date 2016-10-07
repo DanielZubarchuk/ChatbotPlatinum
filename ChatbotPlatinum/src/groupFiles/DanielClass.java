@@ -47,11 +47,9 @@ public class DanielClass implements Chatbot{
 				else{
 					getSpecificHint(answer, questionSelection);
 				}
-
 			}
 			//DanielMain.print("You typed "+);
 		} 
-		
 	}
 
 	private String getSpecificHint(String real, int question){
