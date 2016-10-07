@@ -42,7 +42,6 @@ public class DanielClass implements Chatbot{
 				if(guess.equals(answer)){
 					DanielMain.print("You guessed correctly!");
 					correct = true;
-					talk();
 				}
 				else{
 					getSpecificHint(answer, questionSelection);
