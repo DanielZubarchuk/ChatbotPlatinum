@@ -13,23 +13,29 @@ public class RichardClass implements Chatbot{
 	//oldLKiving = newLivintg;
 	private String[] names = {"Joey", "Richard", "Daniel", "Victor", "Tobi", "Nockles", "Pickles", "Poon Bear", "Irene", 
 			"Amy", "Oscar", "Tina", "Jonathan", "Willy", "Dubby", "Terrance", "Jae", "Shirley", "Sara", "Taylor"};
-	private String[] wordsHurt = {"GAME OVER    YOU LOSE", "You suck at this", "What a n00b, learn to think", "Give up", "Uninstall please","LOSER, KEEP THAT 'L'"};
-	private String[] encouragement = {"Are you even trying?? Try again", "Oops, I cheated! *Try again?", "Just type 'QUIT' alreay, we all know you're a failure. *Try again?",
-			"What's that in your head? Oh, nevermind its just an empty shell. *Try again?", "Are you done or are you dead? *Try again?", "Take the 'L' man, stop wasting everyone's time. *Try again?"};
+	private String[] wordsHurt = {"GAME OVER    YOU LOSE", "You suck at this", "What a n00b, learn to think", "Uninstall please","LOSER, KEEP THAT 'L'"};
+	private String[] encouragement = {"Are you even trying?? *Try again", "Oops, I cheated! *Try again", "Just type 'QUIT' already, we all know you're a failure. *Try again",
+			"What's that in your head? Oh, nevermind its just an empty shell. *Try again", "Are you done or are you dead? *Try again", "Take the 'L' man, stop wasting everyone's time. *Try again", 
+			"Do you ever get the feeling that you're being watched? Because if it is bothering you, I\'ll stop. *Try again", "Are you sure you're not the mafia? *Try again", "Stop potatoing. That is why I don't wanna be human. *Try again"};
+	private String[] triggered = {"Bruh, if a trash typer like you would get a coding job, I would just fire you", "How do you fail to copy something? Do you have hand tremors or something?", "Spare us the typing and just turn off your computer. Your capable of doing that... I think",
+			"Ring Ring, oh it's a message for you: LEARN TO TYPE CORRECTLY", "It must be hard pressing buttons, why don't you just unplug your keyboard.", "Take a hike so I do not have to look at your trashy typing skills."};
 	static boolean inKillLoop;
 	static boolean checking;
 	static boolean check;
 	static boolean win;
 	private int killCount;
 	private int totalHeadCount;
+	private int happyTriggering;
+	int maf1 = 1;
+	int maf2 = 1;
 	static String response;
 	public String[] people;
 	public String[] mafia;
 	private String beep; 
-	private int happyTriggering;
 	//public String[] copyPlayers;
 	
 	private void generateLiving(){
+		happyTriggering = 0;
 		totalHeadCount = 12;
 	//	System.out.println("1");
 		String[] players;
@@ -54,6 +60,7 @@ public class RichardClass implements Chatbot{
 			
 			while(checking == true){
 				if(checkResponse(response) == true){
+					happyTriggering = 0;
 //					System.out.println("4");
 					replace(people, response, "");
 //					System.out.println("a");
@@ -61,9 +68,12 @@ public class RichardClass implements Chatbot{
 //					System.out.println("b");
 					userKill(response);
 //					System.out.println("c");
-					if(checkVictory() == true){
+					if(killCount == 6){
+						if(checkVictory() == true){
 //						System.out.println("d");
 						win = true;
+						break;
+						}
 						break;
 					}
 //					System.out.println("e");
@@ -80,21 +90,25 @@ public class RichardClass implements Chatbot{
 				else{
 					DanielMain.print("Are you stupid? Does that look like a listed name?");
 					happyTriggering++;
+					if(happyTriggering > 3){
+						int responseSelection = (int) (Math.random()*triggered.length);
+						DanielMain.print(triggered[responseSelection]);
+					}
 					System.out.println(Arrays.toString(people));
 					checking = false;
 				}
 			}
-			if(killCount == 4){
-				System.out.println("5");
+			if(killCount == 6){
+//				System.out.println("5");
 				inKillLoop = false;
 				loser();	
 			}
 			if(win == true){
 				inKillLoop = false;
+				win();
 			}
 			checking = true;
 		}
-		win();
 	}
 	private boolean checkVictory(){
 	//	System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
@@ -105,7 +119,15 @@ public class RichardClass implements Chatbot{
 	//			System.out.println(x);
 			}
 		}
-		if(x == 0){
+		for(int i = 0; i <= people.length -1; i++){
+			if(!(people[i] == mafia[0])){
+				maf1--;
+			}
+			if(!(people[i] == mafia[1])){
+				maf2--;
+			}
+		}
+		if(x == 0 && (maf1 == 0 && maf2 == 0)){
 			return true;
 		}
 		else{
@@ -113,9 +135,10 @@ public class RichardClass implements Chatbot{
 		}
 	}
 	private void loser(){
-		System.out.println("7");
+//		System.out.println("7");
 		int l = (int) ((Math.random()*(wordsHurt.length-1))+1);
 		DanielMain.print(wordsHurt[0]);
+		DanielMain.print("The mafias were: " + Arrays.toString(mafia));
 		DanielMain.print(wordsHurt[l]);
 	}
 	private void win(){
@@ -150,8 +173,8 @@ public class RichardClass implements Chatbot{
 	}
 	private void mafiaKill(){
 	//	System.out.println("9");
-		int deathByMaf = (int) ((double) Math.random()*(people.length - killCount));
-		if(people[deathByMaf] == mafia[0] || people[deathByMaf] == mafia[1] || people[deathByMaf] == ""){
+		int deathByMaf = (int) (Math.random()*people.length);
+		if((people[deathByMaf] == mafia[0] || people[deathByMaf] == mafia[1]) || people[deathByMaf] == ""){
 	//		System.out.println("10");
 			mafiaKill();
 		}
@@ -245,7 +268,7 @@ public class RichardClass implements Chatbot{
 					}
 				}
 			}
-			System.out.println("##################### " + Arrays.toString(mafia));
+//			System.out.println("##################### " + Arrays.toString(mafia));
 			return mafia;
 	}
 	public String[] randomize(String[]players){
@@ -279,7 +302,6 @@ public class RichardClass implements Chatbot{
 //		for(int i = 0; i<list.length; i++){
 //			replace(randomizedList, "", String[][])
 //		}
-		
 	@Override
 	public void talk() {
 	//	System.out.println("22");
@@ -293,12 +315,16 @@ public class RichardClass implements Chatbot{
 				inRichardClassLoop = false;
 				DanielMain.promptGame();
 			}
+			if(!isTriggered(beep)){
+				inRichardClassLoop = false;
+				DanielMain.promptGame();
+			}
 		}
 	}
 
 	@Override
 	public boolean isTriggered(String userInput) {
-		System.out.println("23");
+//		System.out.println("23");
 		if(happyTriggering >= 3){
 			return true;
 		}
