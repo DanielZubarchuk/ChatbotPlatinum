@@ -133,7 +133,7 @@ public class RichardClass implements Chatbot{
 	}
 	private void win(){
 	//	System.out.println("8");
-		DanielMain.print("Cheater, I hope you die");
+		DanielMain.print("Fine, you win this time. Go play a different game.");
 	}
 	private void userKill(String response){
 	//	System.out.println("999");
@@ -163,7 +163,7 @@ public class RichardClass implements Chatbot{
 	}
 	private void mafiaKill(){
 	//	System.out.println("9");
-		int deathByMaf = (int) (Math.random()*people.length);
+		int deathByMaf = (int) (Math.random()*people.length-1);
 		if((people[deathByMaf] == mafia[0] || people[deathByMaf] == mafia[1]) || people[deathByMaf] == ""){
 	//		System.out.println("10");
 			mafiaKill();
@@ -258,7 +258,7 @@ public class RichardClass implements Chatbot{
 					}
 				}
 			}
-			System.out.println("##################### " + Arrays.toString(mafia));
+	//		System.out.println("##################### " + Arrays.toString(mafia));
 			return mafia;
 	}
 	public String[] randomize(String[]players){
