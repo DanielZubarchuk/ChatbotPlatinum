@@ -32,7 +32,6 @@ public class DanielClass implements Chatbot{
 		inHelloLoop = true;
 		int questionSelection = (int)(Math.random()*cpuQuestions.length);
 		String answer = computerChoose(questionSelection);
-		for(int i=0; i<5; i++){
 			askTheQuestion(cpuQuestions[questionSelection]);
 			while(inHelloLoop){
 				String guess = "";
@@ -43,7 +42,7 @@ public class DanielClass implements Chatbot{
 					if(guess.equals(answer)){
 						DanielMain.print("You guessed correctly!");
 						correct = true;
-						talk();
+						//talk();
 					}
 					else{
 						getSpecificHint(answer, questionSelection);
@@ -52,7 +51,6 @@ public class DanielClass implements Chatbot{
 				//DanielMain.print("You typed "+);
 			} 
 		}
-	}
 
 	private String getSpecificHint(String real, int question){
 		if(question == 0){
