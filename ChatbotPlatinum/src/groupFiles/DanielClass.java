@@ -3,53 +3,55 @@ package groupFiles;
 public class DanielClass implements Chatbot{
 
 	private boolean inHelloLoop;
-	
+
 	private String[] cpuQuestions = 
 		{"What Color Am I Thinking Of?", "What Animal Am I Thinking Of?", "What Number Am I Thinking Of?(Between 1 and 10)", "What is my favorite food?", "What is my favorite Sport?"};
-	
+
 	private String[] cpuAnswersOne = 
 		{"Blue", "Red", "Yellow", "Green", "Orange", "Purple"};
 	// first 3 colors are primary colors, meanwhile second 3 are secondary
-	
+
 	private String[] cpuAnswersTwo = 
 		{"Lion", "Tiger", "Ostrich", "Zebra", "Hamster", "Parrot", "Cat", "Dog"};
 	// first 4 animals are wild animals, meanwhile the rest are domestic
-	
+
 	private String[] cpuAnswersThree = 
 		{"2", "3", "5", "7", "4", "6", "8", "9"};
 	// first 4 numbers are prime, others are composite.
-	
+
 	private String[] cpuAnswersFour = 
 		{"Pizza", "Chips", "Hamburgers", "Salad", "Meat", "Rice"};
 	// first 3 foods are unhealthy, meanwhile second 3 foods are healthy
-	
+
 	private String[] cpuAnswersFive = 
 		{"Soccer", "Football", "Basketball", "Hockey", "Swimming", "Track"};
 	// first 3 sports include a ball, other 3 do not
-	
-	
+
+
 	public void talk() {
 		inHelloLoop = true;
 		int questionSelection = (int)(Math.random()*cpuQuestions.length);
 		String answer = computerChoose(questionSelection);
-		askTheQuestion(cpuQuestions[questionSelection]);
-		while(inHelloLoop){
-			String guess = "";
-			boolean correct = false;
-			while(!correct){
-				//getSpecificHint();
-				guess = forceResponse(getAllowedResponses(questionSelection));
-				if(guess.equals(answer)){
-					DanielMain.print("You guessed correctly!");
-					correct = true;
-					talk();
+		for(int i=0; i<5; i++){
+			askTheQuestion(cpuQuestions[questionSelection]);
+			while(inHelloLoop){
+				String guess = "";
+				boolean correct = false;
+				while(!correct){
+					//getSpecificHint();
+					guess = forceResponse(getAllowedResponses(questionSelection));
+					if(guess.equals(answer)){
+						DanielMain.print("You guessed correctly!");
+						correct = true;
+						talk();
+					}
+					else{
+						getSpecificHint(answer, questionSelection);
+					}
 				}
-				else{
-					getSpecificHint(answer, questionSelection);
-				}
-			}
-			//DanielMain.print("You typed "+);
-		} 
+				//DanielMain.print("You typed "+);
+			} 
+		}
 	}
 
 	private String getSpecificHint(String real, int question){
@@ -68,7 +70,7 @@ public class DanielClass implements Chatbot{
 				DanielMain.print("No, It is a wild animal that is related to Cats.");
 			}
 			if(real.equals("Zebra")){
-					DanielMain.print("No, It is a wild animal that has stripes.");
+				DanielMain.print("No, It is a wild animal that has stripes.");
 			}
 			if(real.equals("Ostrich")){
 				DanielMain.print("No, It is a wild bird that can not fly.");
@@ -77,7 +79,7 @@ public class DanielClass implements Chatbot{
 			{
 				DanielMain.print("No, It is a domestic animal");
 			}	
-			
+
 		}
 		if(question == 2){
 			if (real.equals("2") || real.equals("3") || real.equals("5") || real.equals("7")){
@@ -87,7 +89,7 @@ public class DanielClass implements Chatbot{
 			{
 				DanielMain.print("No, It is not a prime number");
 			}	
-			
+
 		}
 		if(question == 3){
 			if (real.equals("Pizza")){
@@ -101,17 +103,17 @@ public class DanielClass implements Chatbot{
 			}
 			if (real.equals("Salad")){
 				DanielMain.print("No, You should be a Herbivore.");
-				
+
 			}
 			if (real.equals("Meat")){
 				DanielMain.print("No, You should be a Carnivore.");
-				
+
 			}
 			if (real.equals("Rice")){
 				DanielMain.print("No, you would probably like it with Chicken though.");
-				
+
 			}
-			
+
 		}
 		if(question == 4){
 			if (real.equals("Soccer"))
@@ -138,7 +140,7 @@ public class DanielClass implements Chatbot{
 			{
 				DanielMain.print("No, have you ever heard of Usain Bolt.");
 			}
-			
+
 		}
 
 		return null;
@@ -147,23 +149,23 @@ public class DanielClass implements Chatbot{
 	private String[] getAllowedResponses(int questionSelection) {
 		if(questionSelection == 0){
 			return cpuAnswersOne;
-			
+
 		}
 		if(questionSelection == 1){
 			return cpuAnswersTwo;
-			
+
 		}
 		if(questionSelection == 2){
 			return cpuAnswersThree;
-			
+
 		}
 		if(questionSelection == 3){
 			return cpuAnswersFour;
-			
+
 		}
 		if(questionSelection == 4){
 			return cpuAnswersFive;
-			
+
 		}
 		return null;
 	}
@@ -174,13 +176,13 @@ public class DanielClass implements Chatbot{
 
 	private String computerChoose(int questionSelection) {
 		//helper method
-		
+
 		int answerSelectionOne = (int)(Math.random()*cpuAnswersOne.length);
 		int answerSelectionTwo = (int)(Math.random()*cpuAnswersTwo.length);
 		int answerSelectionThree = (int)(Math.random()*cpuAnswersThree.length);
 		int answerSelectionFour = (int)(Math.random()*cpuAnswersFour.length);
 		int answerSelectionFive = (int)(Math.random()*cpuAnswersFive.length);
-		
+
 		if(questionSelection == 0){
 			return  cpuAnswersOne[answerSelectionOne];
 		}
@@ -210,7 +212,7 @@ public class DanielClass implements Chatbot{
 	}
 
 	private boolean notAMatch(String input, String[] acceptedResponse) {
-		
+
 		for(int i = 0; i < acceptedResponse.length; i ++){
 			if((DanielMain.findKeyword(input, acceptedResponse[i], 0) >= 0) ){
 				return false;
@@ -218,14 +220,14 @@ public class DanielClass implements Chatbot{
 		}
 		return true;
 	}
-	
+
 	public boolean isTriggered(String userInput) {
 		if(DanielMain.findKeyword(userInput, "", 0) >= 0){
 			return true;
 		}
 		return false;
-		
-		
+
+
 	}
 
 }
