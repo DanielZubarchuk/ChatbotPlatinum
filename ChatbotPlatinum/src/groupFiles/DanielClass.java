@@ -44,7 +44,7 @@ public class DanielClass implements Chatbot{
 					DanielMain.print("You guessed correctly!");
 					correct = true;
 				}
-				DanielMain.print(getSpecificHint(guess,questionSelection));
+				getSpecificHint(guess, questionSelection);
 
 			}
 			//DanielMain.print("You typed "+);
