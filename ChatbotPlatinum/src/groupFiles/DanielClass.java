@@ -66,10 +66,16 @@ public class DanielClass implements Chatbot{
 		}
 		if(question == 1)
 		{
-			if (real.equals("Lion") || real.equals("Tiger") || real.equals("Ostrich") || real.equals("Zebra")){
-				DanielMain.print("No, It is a wild animal.");
+			if (real.equals("Lion") || real.equals("Tiger")){
+				DanielMain.print("No, It is a wild animal that is related to Cats.");
 			}
-			else
+			if(real.equals("Zebra")){
+					DanielMain.print("No, It is a wild animal that has stripes.");
+			}
+			if(real.equals("Ostrich")){
+				DanielMain.print("No, It is a wild bird that can not fly.");
+			}
+			if(real.equals("Dog") || real.equals("Cat")|| real.equals("Hamster")|| real.equals("Parrot"))
 			{
 				DanielMain.print("No, It is a domestic animal");
 			}	
@@ -86,24 +92,54 @@ public class DanielClass implements Chatbot{
 			
 		}
 		if(question == 3){
-			if (real.equals("Pizza") || real.equals("Hamburgers") || real.equals("Chips")){
-				DanielMain.print("No, It is an unhealthy food.");
+			if (real.equals("Pizza")){
+				DanielMain.print("No, You can find it near Dekalb Station.");
 			}
-			else
-			{
-				DanielMain.print("No, It is a healthy food.");
-			}	
+			if (real.equals("Hamburgers")){
+				DanielMain.print("No, but I'm Loving It.");
+			}
+			if (real.equals("Chips")){
+				DanielMain.print("No, used to be 25 cents nots it's 50.");
+			}
+			if (real.equals("Salad")){
+				DanielMain.print("No, You should be a Herbivore.");
+				
+			}
+			if (real.equals("Meat")){
+				DanielMain.print("No, You should be a Carnivore.");
+				
+			}
+			if (real.equals("Rice")){
+				DanielMain.print("No, you would probably like it with Chicken though.");
+				
+			}
 			
 		}
 		if(question == 4){
-			if (real.equals("Soccer") || real.equals("Football") || real.equals("Basketball"))
+			if (real.equals("Soccer"))
 			{
-				DanielMain.print("No, It is a sport that needs a ball.");
+				DanielMain.print("No, but have you ever heard of Messi.");
 			}
-			else
+			if (real.equals("Football"))
 			{
-				DanielMain.print("No, This sport doesn’t need a ball.");
-			}	
+				DanielMain.print("No, have you ran some yards yet?");
+			}
+			if (real.equals("Basketball"))
+			{
+				DanielMain.print("No, the sport has nets.");
+			}
+			if (real.equals("Hockey"))
+			{
+				DanielMain.print("No, we should go to an ice rink some time");
+			}
+			if (real.equals("Swimming"))
+			{
+				DanielMain.print("No, but I do not like getting wet.");
+			}
+			if (real.equals("Track"))
+			{
+				DanielMain.print("No, have you ever heard of Usain Bolt.");
+			}
 			
 		}
 
