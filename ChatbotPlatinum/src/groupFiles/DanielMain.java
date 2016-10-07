@@ -129,7 +129,7 @@ public class DanielMain {
     
     public static void print(String s){
          String printString = "";
-         int cutoff = 25;
+         int cutoff = 80;
     
          while(s.length() > 0){
 
