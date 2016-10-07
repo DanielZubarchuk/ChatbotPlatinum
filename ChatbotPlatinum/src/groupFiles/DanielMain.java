@@ -11,6 +11,7 @@ public class DanielMain {
         
         static Chatbot daniel;
         static Chatbot blackJack;
+        static Chatbot mafia;
         
     public static void main(String[] args) {
         createFields();
@@ -36,7 +37,7 @@ public class DanielMain {
                 print("Okay, let's begin our game of BlackJack.");
                 blackJack.talk();
             }
-            if(findKeyword(response, "question game", 0) >= 0){
+            if(findKeyword(response, "questions", 0) >= 0){
             //DANIEL TRIGGER WORD
                 inMainLoop = false;
                 
@@ -44,6 +45,8 @@ public class DanielMain {
             if(findKeyword(response, "mafia", 0) >= 0){
             //RICHARD TRIGGER WORD
                 inMainLoop = false;
+                print("There are two Mafias in the group. Find them and kill them. If ");
+                mafia.talk();
             }
             else {
                 print("Please pick a game");
@@ -125,6 +128,7 @@ public class DanielMain {
         daniel = new DanielClass();
         user = "";
         blackJack = new JoeyClass();
+        mafia = new RichardClass();
     }
     
     public static void print(String s){
