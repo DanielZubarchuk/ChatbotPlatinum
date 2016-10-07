@@ -124,7 +124,7 @@ public class DanielMain {
         input =  new Scanner(System.in);
         daniel = new DanielClass();
         user = "";
-        blackjack = new JoeyClass();
+        blackJack = new JoeyClass();
     }
     
     public static void print(String s){
