@@ -138,7 +138,7 @@ public class RichardClass implements Chatbot{
 //		System.out.println("7");
 		int l = (int) ((Math.random()*(wordsHurt.length-1))+1);
 		DanielMain.print(wordsHurt[0]);
-		DanielMain.print("The mafias were: " + mafia);
+		DanielMain.print("The mafias were: " + Arrays.toSting(mafia));
 		DanielMain.print(wordsHurt[l]);
 	}
 	private void win(){
