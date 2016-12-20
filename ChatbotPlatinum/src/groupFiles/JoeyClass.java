@@ -69,11 +69,12 @@ public class JoeyClass implements Chatbot{
     
     private boolean isInteger(String s) {
       boolean isValidInteger = false;
-      try
-      {   
-        Integer.parseInt(s);
-       isValidInteger = true;
-      }
+//      try
+//      {   
+//        Integer.parseInt(s);
+//       isValidInteger = true;
+//      }
+//      finally{
       return isValidInteger;
    }
     
@@ -81,7 +82,7 @@ public class JoeyClass implements Chatbot{
         boolean loop = true;
         while(loop){
             print("Welcome "+DanielMain.user+", enter a number of dollars you wish to bet.");
-            if(isValidInteger(input.nextLine())){
+            if(isInteger(input.nextLine())){
                 loop = false;
                 playerBet = input.nextInt();
             }else{
