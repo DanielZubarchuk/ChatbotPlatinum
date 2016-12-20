@@ -1,4 +1,4 @@
-package guiPractice8.component;
+package guiPractice.component;
 
 import java.awt.image.BufferedImage;
 

@@ -1,10 +1,10 @@
-package guiPractice8.sampleGames;
+package guiPractice.sampleGames;
 
 import java.util.ArrayList;
 
-import guiPractice8.GUIApplication;
-import guiPractice8.Screen;
-import guiPractice8.component.Visible;
+import guiPractice.GUIApplication;
+import guiPractice.Screen;
+import guiPractice.component.Visible;
 
 public class BlankScreen extends Screen{
 

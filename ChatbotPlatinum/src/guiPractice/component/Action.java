@@ -1,4 +1,4 @@
-package guiPractice8.component;
+package guiPractice.component;
 
 public interface Action {
 	public void Act();

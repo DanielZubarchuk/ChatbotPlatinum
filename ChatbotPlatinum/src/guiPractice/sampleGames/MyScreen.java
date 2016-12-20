@@ -1,4 +1,4 @@
-package guiPractice8.sampleGames;
+package guiPractice.sampleGames;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
@@ -6,11 +6,11 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 
-import guiPractice8.Screen;
-import guiPractice8.component.Action;
-import guiPractice8.component.Button;
-import guiPractice8.component.Graphic;
-import guiPractice8.component.Visible;
+import guiPractice.Screen;
+import guiPractice.component.Action;
+import guiPractice.component.Button;
+import guiPractice.component.Graphic;
+import guiPractice.component.Visible;
 
 public class MyScreen extends Screen implements MouseMotionListener, MouseListener{
 
