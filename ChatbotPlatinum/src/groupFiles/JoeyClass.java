@@ -19,12 +19,11 @@ public class JoeyClass implements Chatbot{
 	private String[] praiseMove = {"Wow that's a brave move.", "Big balls for big people", "Feeling lucky today?", "Yolo420 amiright", "I admire your bravery."};
 	private String[] bust = {"Feels bad to be bad, you busted!", "That's a bust", "That's the neverlucky bust!"};
 
-<<<<<<< HEAD
-    private void standResponse() {
+    private void standResponse1() {
         print("Okay, the value of your hand is "+ player.getHandValue());
     }
     
-    private void dumbResponse() {
+    private void dumbResponse1() {
         //replies annoyingly if 3+ mistakes were made
         if(annoyedCounter>3){
             int responseSelection = (int)(Math.random()*annoyed.length);
@@ -53,7 +52,7 @@ public class JoeyClass implements Chatbot{
       return isValidInteger;
    }
     
-    private void buyIn(){
+    private void buyIn1(){
         boolean loop = true;
         while(loop){
             print("Welcome "+DanielMain.user+", enter a number of dollars you wish to bet.");
@@ -90,7 +89,7 @@ public class JoeyClass implements Chatbot{
         
     }
    
-   private void results(){
+   private void results1(){
        if(player.isBust()){
            if(dealer.isBust()){
                print("This round is a draw.");
@@ -120,7 +119,7 @@ public class JoeyClass implements Chatbot{
    
    public void run(){
        while (player.wealth > 0){
-           buyIn();
+           buyIn1();
            dealer.hit();
            dealer.hit();
            player.hit();
@@ -140,12 +139,10 @@ public class JoeyClass implements Chatbot{
            
    
    
-public boolean isTriggered(String userInput) {
+public boolean isTriggered1(String userInput) {
     // TODO Auto-generated method stub
     return false;
 }
-    
-=======
 	static Scanner input = new Scanner(System.in);
 	private int playerBet;
 	//to create blackjack; ai deals after player places a bet. deals 2 cards per player and player makes moves until bust or stand
@@ -160,7 +157,7 @@ public boolean isTriggered(String userInput) {
 		player.changeName(DanielMain.user);
 		while (player.wealth > 0){
 
-			buyIn();
+			buyIn1();
 			dealer.hit();
 			dealer.hit();
 			player.hit();
@@ -178,7 +175,7 @@ public boolean isTriggered(String userInput) {
 					dealer.hit();
 				}
 			}
-			results();
+			results1();
 			print("Your new balance is "+player.wealth);
 			resetGameVariables();
 			if(!playAgain()){
@@ -225,12 +222,12 @@ public boolean isTriggered(String userInput) {
 			annoyedCounter = 0;
 		}
 		if (!isHit(action) && isStand(action)){
-			standResponse();
+			standResponse1();
 			player.stand = true;
 			annoyedCounter = 0;
 		}
 		if (isHit(action) && isStand(action)){
-			dumbResponse();
+			dumbResponse1();
 		}
 
 	}
@@ -360,5 +357,4 @@ public boolean isTriggered(String userInput) {
 		return false;
 	}
 
->>>>>>> refs/remotes/origin/master
 }

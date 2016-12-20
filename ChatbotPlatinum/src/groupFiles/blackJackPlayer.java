@@ -63,4 +63,10 @@ public class blackJackPlayer {
 		return handValue > 21;
 
 	}
+
+
+	public String getHandValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
